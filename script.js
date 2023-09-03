@@ -1,38 +1,69 @@
-// JavaScript code to add interactivity
+// JavaScript code for QuantumVerse Explorer
 
 // Function to simulate changing the multiverse
 function simulateMultiverseChange() {
     const multiverseSimulator = document.getElementById("multiverse-simulator");
-    
-    // Implement the Multiverse Simulator content with a placeholder simulation
-    multiverseSimulator.innerHTML = `
-        <h3>Explore the Multiverse</h3>
-        <div id="multiverse-simulation">
-            <button id="startSimulation">Start Simulation</button>
-            <p id="simulationResult"></p>
-        </div>
-    `;
-
-    // Add interactivity to the simulation
+    const canvas = document.getElementById("multiverse-canvas");
     const startSimulationButton = document.getElementById("startSimulation");
     const simulationResult = document.getElementById("simulationResult");
+    const ctx = canvas.getContext("2d");
 
+    // Clear canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Define universes with different colors
+    const universes = [
+        { color: "#ff0000", name: "Universe A" },
+        { color: "#00ff00", name: "Universe B" },
+        { color: "#0000ff", name: "Universe C" },
+    ];
+
+    let currentUniverse = 0;
+
+    // Function to draw a universe
+    function drawUniverse() {
+        ctx.fillStyle = universes[currentUniverse].color;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        simulationResult.textContent = `You're in ${universes[currentUniverse].name}`;
+    }
+
+    // Function to switch to the next universe
+    function switchUniverse() {
+        currentUniverse = (currentUniverse + 1) % universes.length;
+        drawUniverse();
+    }
+
+    // Add interactivity to the simulation
     startSimulationButton.addEventListener("click", () => {
-        // Placeholder simulation logic (replace with your actual simulation)
-        const randomNumber = Math.random();
-        if (randomNumber < 0.5) {
-            simulationResult.textContent = "You've entered Universe A!";
-        } else {
-            simulationResult.textContent = "You've entered Universe B!";
-        }
+        simulationResult.textContent = "Starting the journey...";
+        startSimulationButton.disabled = true;
+
+        // Simulate a journey through universes
+        const journeyInterval = setInterval(() => {
+            switchUniverse();
+        }, 1000);
+
+        // Stop the journey after 5 seconds
+        setTimeout(() => {
+            clearInterval(journeyInterval);
+            startSimulationButton.disabled = false;
+            simulationResult.textContent = "Journey completed!";
+        }, 5000);
     });
+
+    // Initial universe
+    drawUniverse();
 }
+
+// Add click event listener to "Start Simulation" button
+document.querySelector('a[href="#multiverse"]').addEventListener('click', simulateMultiverseChange);
 
 // Function to experiment in the Quantum Playground
 function quantumExperiment() {
+    // Implement the Quantum Playground content with a simple experiment
     const quantumPlayground = document.getElementById("quantum-playground-content");
     
-    // Implement the Quantum Playground content with a simple experiment
     quantumPlayground.innerHTML = `
         <h3>Quantum Playground</h3>
         <div id="quantum-experiment">
@@ -41,22 +72,22 @@ function quantumExperiment() {
         </div>
     `;
 
-    // Add interactivity to the quantum experiment
     const runExperimentButton = document.getElementById("runExperiment");
     const experimentResult = document.getElementById("experimentResult");
 
     runExperimentButton.addEventListener("click", () => {
-        // Placeholder quantum experiment logic (replace with your actual experiment)
         const randomOutcome = Math.random() < 0.5 ? "Spin Up" : "Spin Down";
         experimentResult.textContent = `Measurement Result: ${randomOutcome}`;
     });
 }
 
+document.querySelector('a[href="#quantum-playground"]').addEventListener('click', quantumExperiment);
+
 // Function to explore quantum mysteries
 function exploreQuantumMysteries() {
+    // Implement the Quantum Mysteries content with an article
     const quantumMysteries = document.getElementById("quantum-mysteries-content");
     
-    // Implement the Quantum Mysteries content with an article
     quantumMysteries.innerHTML = `
         <h3>Quantum Mysteries</h3>
         <article>
@@ -75,11 +106,13 @@ function exploreQuantumMysteries() {
     `;
 }
 
+document.querySelector('a[href="#quantum-mysteries"]').addEventListener('click', exploreQuantumMysteries);
+
 // Function to enroll in courses
 function enrollInCourses() {
+    // Implement the Interactive Courses content with course listings
     const coursesContent = document.getElementById("courses-content");
     
-    // Implement the Interactive Courses content with course listings
     coursesContent.innerHTML = `
         <h3>Interactive Courses</h3>
         <ul>
@@ -90,11 +123,13 @@ function enrollInCourses() {
     `;
 }
 
+document.querySelector('a[href="#courses"]').addEventListener('click', enrollInCourses);
+
 // Function to browse the Quantum Art Gallery
 function browseArtGallery() {
+    // Implement the Quantum Art Gallery content with artwork listings
     const artGalleryContent = document.getElementById("art-gallery-content");
     
-    // Implement the Quantum Art Gallery content with artwork listings
     artGalleryContent.innerHTML = `
         <h3>Quantum Art Gallery</h3>
         <div class="artwork">
@@ -108,11 +143,13 @@ function browseArtGallery() {
     `;
 }
 
+document.querySelector('a[href="#art-gallery"]').addEventListener('click', browseArtGallery);
+
 // Function to access the Community Hub
 function accessCommunityHub() {
+    // Implement the Community Hub content with forum discussions
     const communityContent = document.getElementById("community-content");
     
-    // Implement the Community Hub content with forum discussions
     communityContent.innerHTML = `
         <h3>Community Hub</h3>
         <section id="forum">
@@ -126,10 +163,4 @@ function accessCommunityHub() {
     `;
 }
 
-// Add click event listeners to navigation links
-document.querySelector('a[href="#multiverse"]').addEventListener('click', simulateMultiverseChange);
-document.querySelector('a[href="#quantum-playground"]').addEventListener('click', quantumExperiment);
-document.querySelector('a[href="#quantum-mysteries"]').addEventListener('click', exploreQuantumMysteries);
-document.querySelector('a[href="#courses"]').addEventListener('click', enrollInCourses);
-document.querySelector('a[href="#art-gallery"]').addEventListener('click', browseArtGallery);
 document.querySelector('a[href="#community"]').addEventListener('click', accessCommunityHub);
