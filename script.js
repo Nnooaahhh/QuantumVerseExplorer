@@ -1,21 +1,39 @@
 // JavaScript code to add interactivity
 
-// Function to change the background color
-function changeBackgroundColor() {
-    const colors = ["#0073e6", "#e60000", "#00cc66", "#ff9900"];
-    const body = document.body;
-    const currentColor = body.style.backgroundColor;
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-    // Ensure the new color is different from the current color
-    if (currentColor !== randomColor) {
-        body.style.backgroundColor = randomColor;
-    } else {
-        // If the random color is the same as the current color, try again
-        changeBackgroundColor();
-    }
+// Function to simulate changing the multiverse
+function simulateMultiverseChange() {
+    // Add code for the Multiverse Simulator here
 }
 
-// Add a click event listener to the button
-const changeColorButton = document.getElementById("changeColorButton");
-changeColorButton.addEventListener("click", changeBackgroundColor);
+// Function to experiment in the Quantum Playground
+function quantumExperiment() {
+    // Add code for the Quantum Playground here
+}
+
+// Function to explore quantum mysteries
+function exploreQuantumMysteries() {
+    // Add code for Quantum Mysteries here
+}
+
+// Function to enroll in courses
+function enrollInCourses() {
+    // Add code for enrolling in Interactive Courses here
+}
+
+// Function to browse the Quantum Art Gallery
+function browseArtGallery() {
+    // Add code for the Quantum Art Gallery here
+}
+
+// Function to access the Community Hub
+function accessCommunityHub() {
+    // Add code for the Community Hub here
+}
+
+// Add click event listeners to navigation links
+document.querySelector('a[href="#multiverse"]').addEventListener('click', simulateMultiverseChange);
+document.querySelector('a[href="#quantum-playground"]').addEventListener('click', quantumExperiment);
+document.querySelector('a[href="#quantum-mysteries"]').addEventListener('click', exploreQuantumMysteries);
+document.querySelector('a[href="#courses"]').addEventListener('click', enrollInCourses);
+document.querySelector('a[href="#art-gallery"]').addEventListener('click', browseArtGallery);
+document.querySelector('a[href="#community"]').addEventListener('click', accessCommunityHub);
